@@ -5,9 +5,11 @@ import Layout from "./Components/Layout/layout";
 
 function App() {
   return (
+
     <Layout>
       <AppRoutes />;
-    </Layout>
+      </Layout>
+
   );
 }
 
