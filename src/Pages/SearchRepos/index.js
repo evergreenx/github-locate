@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CustomInput } from "../../Components/";
-import { UserCard } from "../../Components";
+// import { UserCard } from "../../Components";
 function Index() {
   const [value, setValue] = useState("");
   return (
@@ -9,7 +9,7 @@ function Index() {
         <CustomInput
           onChange={(e) => {
             setValue(e.target.value);
-            console.log(e.target.value);
+        
           }}
           value={value}
           placeholder={"Search Github repos"}

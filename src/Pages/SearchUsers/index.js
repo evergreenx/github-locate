@@ -18,7 +18,7 @@ function Index() {
     }
   );
 
-  console.log(data);
+
 
   return (
     <>
