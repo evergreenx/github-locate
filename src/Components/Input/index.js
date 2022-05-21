@@ -1,17 +1,26 @@
 import React from "react";
 import { GrSearchAdvanced } from "react-icons/gr";
 
-function index({ onChange, value, placeholder }) {
+function index({ onChange, value, placeholder, searchBtnText, refetch }) {
   return (
-    <div className="bg-slate-100 p-4 rounded-lg w-2/4  flex items-center shadow-lg my-7">
-      <GrSearchAdvanced className="text-3xl" />
-      <input
-        type="text"
-        className=" bg-slate-100 p-3 w-full outline-none"
-        placeholder={placeholder}
-        onChange={onChange}
-        value={value}
-      />
+    <div className="bg-slate-100  rounded-full flex items-center shadow-lg px-3.5 my-7">
+      <div class=" flex items-center p-2">
+        <GrSearchAdvanced className="text-3xl" />
+        <input
+          type="text"
+          className=" bg-slate-100 p-3 w-full outline-none"
+          placeholder={placeholder}
+          onChange={onChange}
+          value={value}
+        />
+      </div>
+
+      <button
+        className="bg-zinc-900 p-3 text-white font-extrabold rounded-full outline-none"
+        onClick={refetch}
+      >
+        {searchBtnText}
+      </button>
     </div>
   );
 }

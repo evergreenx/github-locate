@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CustomInput } from "../../Components/";
+import { UserCard } from "../../Components";
 function Index() {
   const [value, setValue] = useState("");
   return (
@@ -12,8 +13,11 @@ function Index() {
           }}
           value={value}
           placeholder={"Search Github repos"}
+          searchBtnText={"Search repos"}
         />
       </div>
+
+      {/* <UserCard /> */}
     </>
   );
 }
