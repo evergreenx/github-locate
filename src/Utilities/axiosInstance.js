@@ -1,7 +1,7 @@
 import axios from "axios";
 // axios instance
 const axiosGithubUserInstance = axios.create({
-  baseURL: "https://api.nasa.gov/planetary",
+  baseURL: "https://api.github.com/users",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
