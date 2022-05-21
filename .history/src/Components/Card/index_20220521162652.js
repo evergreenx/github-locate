@@ -73,9 +73,9 @@ function UserCard({ data, isFetching, error }) {
         </div>
 
         <div className="text-center px-6">
-          <h1 className="text-2xl capitalize font-extrabold">{data?.name}</h1>
+          <h1 className="text-2xl capitalize font-extrabold">{data?.login}</h1>
 
-          <h1 className="text-xl capitalize font-normal">{data?.login}</h1>
+          <h1 className="text-xl capitalize font-extrabold">{data?.login}</h1>
 
           <p className="text-sm">{data?.bio}</p>
         </div>

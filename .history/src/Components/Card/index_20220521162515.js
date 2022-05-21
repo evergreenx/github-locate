@@ -73,10 +73,7 @@ function UserCard({ data, isFetching, error }) {
         </div>
 
         <div className="text-center px-6">
-          <h1 className="text-2xl capitalize font-extrabold">{data?.name}</h1>
-
-          <h1 className="text-xl capitalize font-normal">{data?.login}</h1>
-
+          <h1 className="text-2xl capitalize font-extrabold">{data?.login}</h1>
           <p className="text-sm">{data?.bio}</p>
         </div>
 
@@ -115,13 +112,13 @@ function UserCard({ data, isFetching, error }) {
           <div class="location flex items-center py-2">
             <TiLocationOutline />
 
-            {data?.location && (
+            {data?.location &&  (
               <div className="text-center px-6">
                 <span className="text-sm capitalize font-extrabold">
                   {data?.location}
                 </span>
               </div>
-            )}
+            ) }
           </div>
           <div class="follow flex items-center py-2">
             <MdPeopleOutline />
@@ -138,11 +135,12 @@ function UserCard({ data, isFetching, error }) {
               </div>
             )}
           </div>
-
+          
           <buuton className="shadow-amber-100 p-3 mx-auto flex justify-center items-center text-white font-bold  bg-black shadow-lg rounded-lg">
-            <a href={data.html_url} target="_blank" rel="noopener noreferrer">
-              View on Github
-            </a>
+            <a href={data.html_url}
+              target
+            
+            >View on Github</a>
           </buuton>
         </div>
       </div>

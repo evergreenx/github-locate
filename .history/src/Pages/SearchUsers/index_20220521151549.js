@@ -18,6 +18,8 @@ function Index() {
     }
   );
 
+
+
   return (
     <>
       <div className="flex items-center justify-center">
@@ -38,14 +40,6 @@ function Index() {
         isLoading={isLoading}
         error={error}
       />
-
-      {data.length === 0 && (
-        <div className="text-center">
-          <h1 className="text-2xl capitalize font-extrabold">
-            try searching for a user
-          </h1>
-        </div>
-      )}
     </>
   );
 }

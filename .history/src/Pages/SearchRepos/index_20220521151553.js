@@ -9,16 +9,13 @@ function Index() {
         <CustomInput
           onChange={(e) => {
             setValue(e.target.value);
+        
           }}
           value={value}
           placeholder={"Search Github repos"}
           searchBtnText={"Search repos"}
         />
       </div>
-
-      {
-        
-      }
 
       {/* <UserCard /> */}
     </>

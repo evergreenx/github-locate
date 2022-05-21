@@ -16,9 +16,7 @@ function Index() {
         />
       </div>
 
-      {
-        
-      }
+      {}
 
       {/* <UserCard /> */}
     </>
