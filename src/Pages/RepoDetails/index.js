@@ -1,25 +1,51 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import { axiosGithubSingleRepoInstance } from "../../Utilities/axiosInstance";
 import { useQuery } from "react-query";
-import { RepoCard } from "../../Components";
+import { RepoCard, RepoContributors } from "../../Components";
 
 export default function Index() {
   const { repo, owner } = useParams();
-
-  const { user } = useParams();
 
   const HandleFetchRepo = () => {
     return axiosGithubSingleRepoInstance.get(`/${owner}/${repo}`);
   };
 
-  const { data, error, isFetching } = useQuery("getRepo", HandleFetchRepo);
+  const { data, error, isFetching } = useQuery(
+    "getRepo",
+
+    HandleFetchRepo
+  );
+
+  let repoContributorsUrl = [];
+  if (data) {
+    repoContributorsUrl = data.data.contributors_url;
+  }
+
+  const HandleFetchContributors = () => {
+    return axiosGithubSingleRepoInstance.get(repoContributorsUrl);
+  };
+
+  const {
+    data: contributorsData,
+    isFetching: isFetchingContributors,
+
+    error: contributorsError,
+  } = useQuery(
+    "getContributors",
+  
+
+    HandleFetchContributors
+  );
 
   return (
     <div>
-     
-
       <RepoCard data={data?.data} isFetching={isFetching} error={error} />
+
+      <RepoContributors
+        data={contributorsData}
+        isFetching={isFetchingContributors}
+        error={contributorsError}
+      />
     </div>
   );
 }

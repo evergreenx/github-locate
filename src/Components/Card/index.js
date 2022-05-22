@@ -164,7 +164,10 @@ function ReposCard({ data, isFetching, error }) {
           return (
             <>
               <Link to={`/repos/${item?.owner.login}/${item?.name}`}>
-                <div className="bg-white w-56 p-5 my-11 flex-col  rounded-lg  flex  justify-center items-center mx-auto">
+                <div
+                  key={index}
+                  className="bg-white w-56 p-5 my-11 flex-col  rounded-lg  flex  justify-center items-center mx-auto"
+                >
                   <div className="image mx-auto">
                     <img
                       src={item?.owner?.avatar_url}
@@ -214,8 +217,6 @@ function ReposCard({ data, isFetching, error }) {
     </>
   );
 }
-
-
 
 function RepoTopicsTags({ topics }) {
   return (
@@ -317,4 +318,27 @@ function RepoCard({ data, isFetching, error }) {
   );
 }
 
-export { UsersCard, UserCard, ReposCard, RepoCard };
+function RepoContributors({ data, isFetching, error }) {
+  if (isFetching) {
+    return null;
+  }
+  if (error) {
+    return <div>Error...</div>;
+  }
+
+  return (
+    <>
+      <h1 className="text-center">
+        {
+          <span className="text-xl text-center capitalize font-extrabold">
+            Contributors
+          </span>
+        }
+      </h1>
+
+      <UsersCard data={data?.data} />
+    </>
+  );
+}
+
+export { UsersCard, UserCard, ReposCard, RepoCard, RepoContributors };

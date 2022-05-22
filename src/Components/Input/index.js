@@ -4,7 +4,7 @@ import { GrSearchAdvanced } from "react-icons/gr";
 function index({ onChange, value, placeholder, searchBtnText, refetch }) {
   return (
     <div className="bg-slate-100  rounded-full flex items-center shadow-lg px-3.5 my-7">
-      <div class=" flex items-center p-2">
+      <div className=" flex items-center p-2">
         <GrSearchAdvanced className="text-3xl" />
         <input
           type="text"
