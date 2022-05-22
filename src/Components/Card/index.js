@@ -162,12 +162,12 @@ function ReposCard({ data, isFetching, error }) {
       <div className="grid gird-cols-1  lg:grid-cols-3 gap-10 ">
         {data?.map((item, index) => {
           return (
-            <>
-              <Link to={`/repos/${item?.owner.login}/${item?.name}`}>
-                <div
-                  key={index}
-                  className="bg-white w-56 p-5 my-11 flex-col  rounded-lg  flex  justify-center items-center mx-auto"
-                >
+            <div key={item.id}>
+              <Link
+                to={`/repos/${item?.owner.login}/${item?.name}`}
+         
+              >
+                <div className="bg-white w-56 p-5 my-11 flex-col  rounded-lg  flex  justify-center items-center mx-auto">
                   <div className="image mx-auto">
                     <img
                       src={item?.owner?.avatar_url}
@@ -210,7 +210,7 @@ function ReposCard({ data, isFetching, error }) {
                   </div>
                 </div>
               </Link>
-            </>
+            </div>
           );
         })}
       </div>
@@ -227,10 +227,10 @@ function RepoTopicsTags({ topics }) {
         )}
       </h2>
       <div className="flex flex-row space-x-1   flex-wrap justify-center items-center">
-        {topics?.map((item) => (
+        {topics?.map((item, index) => (
           <>
             <div
-              key={item?.id}
+              key={index}
               className=" lg:w-1/3 my-3  w-full bg-slate-200 p-2 rounded-full"
             >
               {item}
