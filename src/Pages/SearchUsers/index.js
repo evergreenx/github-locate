@@ -6,6 +6,7 @@ import { axiosGithubSearchInstance } from "../../Utilities/axiosInstance";
 function Index() {
   const [value, setValue] = useState("");
 
+// handle fetching of users based on input
   const HandleFetchUsers = () => {
     return axiosGithubSearchInstance.get(`/users?q=${value}`);
   };

@@ -9,6 +9,7 @@ export default function Index() {
   const [repoContributors, setRepoContributors] = useState([]);
   const { repo, owner } = useParams();
 
+  // handle fetching of repo based on params
   const HandleFetchRepo = () => {
     return axiosGithubSingleRepoInstance.get(`/${owner}/${repo}`);
   };
@@ -18,6 +19,8 @@ export default function Index() {
 
     HandleFetchRepo
   );
+  //
+
   useEffect(() => {
     const fetchContributors = () => {
       if (data) {
@@ -47,8 +50,7 @@ export default function Index() {
   return (
     <div>
       <RepoCard data={data?.data} isFetching={isFetching} error={error} />
-
-      {data?.data && <RepoContributors data={repoContributors} />}
+      <RepoContributors data={repoContributors} />
     </div>
   );
 }

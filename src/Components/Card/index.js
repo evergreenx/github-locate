@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState} from "react";
 import { Loader } from "../index";
 import { Link } from "react-router-dom";
 import { HiOutlineMail } from "react-icons/hi";
@@ -278,7 +278,7 @@ function RepoCard({ data, isFetching, error }) {
           <div className="text-center py-4 justify-between flex lg:flex-row flex-col">
             <a
               href={data?.forks_url}
-              className="text-sm  font-extrabold flex  items-center space-x-2"
+              className="text-sm  font-extrabold flex  items-center space-x-2 mx-2"
             >
               <GoRepoForked className="mr-2" />
               {numFormatter(data?.forks_count)} forks
@@ -286,7 +286,7 @@ function RepoCard({ data, isFetching, error }) {
 
             <a
               href={data?.stargazers_url}
-              className="text-sm  font-extrabold flex items-center"
+              className="text-sm  font-extrabold flex items-center mx-2"
             >
               <AiOutlineStar className="mr-2" />
               {numFormatter(data?.stargazers_count)} stars
@@ -316,10 +316,24 @@ function RepoCard({ data, isFetching, error }) {
 }
 
 function RepoContributors({ data }) {
-  console.log(data, "ples");
+  const [searchValue, setSearchValue] = useState("");
+
+  // filter the contributors data
+  let filter = data?.filter((i) => {
+    return i.login.toLowerCase().includes(searchValue.toLowerCase());
+  });
 
   return (
     <>
+      <input
+        className="bg-slate-200 rounded-2xl w-[50%] p-3 my-11 flex-col  flex  justify-center items-center mx-auto
+        outline-none
+        "
+        type="text"
+        placeholder="Search for a contributor"
+        onChange={(e) => setSearchValue(e.target.value)}
+        value={searchValue}
+      />
       <h1 className="text-center">
         {
           <span className="text-xl text-center capitalize font-extrabold">
@@ -328,7 +342,7 @@ function RepoContributors({ data }) {
         }
       </h1>
 
-      <UsersCard data={data} />
+      {data && <UsersCard data={filter} />}
     </>
   );
 }

@@ -8,6 +8,7 @@ import { UserCard } from "../../Components";
 function Index() {
   const { user } = useParams();
 
+  // handle fetching of user based on params
   const HandleFetchUser = () => {
     return axiosGithubUserInstance.get(`/${user}`);
   };
@@ -16,7 +17,6 @@ function Index() {
 
   return (
     <div>
-   
       <UserCard data={data?.data} isFetching={isFetching} error={error} />
     </div>
   );

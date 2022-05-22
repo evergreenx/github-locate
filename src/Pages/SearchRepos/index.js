@@ -7,6 +7,7 @@ import { ReposCard } from "../../Components";
 function Index() {
   const [value, setValue] = useState("");
 
+  // handle fetching of repos based on input
   const HandleFetchRepos = () => {
     return axiosGithubSearchInstance.get(`/repositories?q=${value}`);
   };
