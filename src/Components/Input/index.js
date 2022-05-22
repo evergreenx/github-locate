@@ -20,7 +20,6 @@ function index({ onChange, value, placeholder, searchBtnText, refetch }) {
         className="bg-zinc-900 p-2 text-sm lg:p-3 text-white font-extrabold rounded-full outline-none"
         onClick={refetch}
         disabled={!value}
-        
       >
         {searchBtnText}
       </button>

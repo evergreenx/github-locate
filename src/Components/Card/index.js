@@ -163,10 +163,7 @@ function ReposCard({ data, isFetching, error }) {
         {data?.map((item, index) => {
           return (
             <div key={item.id}>
-              <Link
-                to={`/repos/${item?.owner.login}/${item?.name}`}
-         
-              >
+              <Link to={`/repos/${item?.owner.login}/${item?.name}`}>
                 <div className="bg-white w-56 p-5 my-11 flex-col  rounded-lg  flex  justify-center items-center mx-auto">
                   <div className="image mx-auto">
                     <img
