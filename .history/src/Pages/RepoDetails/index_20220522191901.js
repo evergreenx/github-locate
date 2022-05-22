@@ -18,32 +18,18 @@ export default function Index() {
 
     HandleFetchRepo
   );
+
+  let contributorsData = [];
   useEffect(() => {
-    const fetchContributors = () => {
-      if (data) {
-        let repoContributorsUrl = [];
 
-        repoContributorsUrl = data?.data.contributors_url;
-
-        const options = {
-          url: repoContributorsUrl,
-          method: "get",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json;charset=UTF-8",
-          },
-        };
-
-        axios(options).then((response) => {
-          console.log(response.data);
-          setRepoContributors(response.data);
-        });
-      }
-    };
-
-    fetchContributors();
+    const fetchContributors = async () => {
+      const response = await axios.get(
+        `https://api.github.com/repos/${owner}/${repo}/contributors`
+        
+  
   }, [data]);
 
+  console.log(repoContributors, "fwjee");
   return (
     <div>
       <RepoCard data={data?.data} isFetching={isFetching} error={error} />

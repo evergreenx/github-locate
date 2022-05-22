@@ -18,6 +18,8 @@ export default function Index() {
 
     HandleFetchRepo
   );
+
+  let contributorsData = [];
   useEffect(() => {
     const fetchContributors = () => {
       if (data) {
@@ -44,6 +46,7 @@ export default function Index() {
     fetchContributors();
   }, [data]);
 
+  console.log(repoContributors, "fwjee");
   return (
     <div>
       <RepoCard data={data?.data} isFetching={isFetching} error={error} />

@@ -18,6 +18,8 @@ export default function Index() {
 
     HandleFetchRepo
   );
+
+  let contributorsData = [];
   useEffect(() => {
     const fetchContributors = () => {
       if (data) {

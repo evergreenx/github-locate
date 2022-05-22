@@ -12,6 +12,7 @@ function index({ onChange, value, placeholder, searchBtnText, refetch }) {
           placeholder={placeholder}
           onChange={onChange}
           value={value}
+          required
         />
       </div>
 

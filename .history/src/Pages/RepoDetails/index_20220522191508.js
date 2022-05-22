@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { axiosGithubSingleRepoInstance } from "../../Utilities/axiosInstance";
 import { useQuery } from "react-query";
@@ -18,37 +18,36 @@ export default function Index() {
 
     HandleFetchRepo
   );
-  useEffect(() => {
-    const fetchContributors = () => {
-      if (data) {
-        let repoContributorsUrl = [];
 
-        repoContributorsUrl = data?.data.contributors_url;
+  let contributorsData = [];
 
-        const options = {
-          url: repoContributorsUrl,
-          method: "get",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json;charset=UTF-8",
-          },
-        };
+  if (data) {
+    let repoContributorsUrl = [];
 
-        axios(options).then((response) => {
-          console.log(response.data);
-          setRepoContributors(response.data);
-        });
-      }
+    repoContributorsUrl = data?.data.contributors_url;
+
+    const options = {
+      url: repoContributorsUrl,
+      method: "get",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
     };
 
-    fetchContributors();
-  }, [data]);
+    axios(options).then((response) => {
+      console.log(response.data);
+      setRepoContributors(response.data);
+    });
+  }
 
+
+  cons
   return (
     <div>
       <RepoCard data={data?.data} isFetching={isFetching} error={error} />
 
-      {data?.data && <RepoContributors data={repoContributors} />}
+      {data?.data && <RepoContributors data={contributorsData} />}
     </div>
   );
 }

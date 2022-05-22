@@ -316,7 +316,7 @@ function RepoCard({ data, isFetching, error }) {
 }
 
 function RepoContributors({ data }) {
-  console.log(data, "ples");
+ 
 
   return (
     <>
@@ -328,7 +328,14 @@ function RepoContributors({ data }) {
         }
       </h1>
 
-      <UsersCard data={data} />
+      {data?.map((item, index) => {
+        return (
+          <>
+            <h1>{item?.login}</h1>
+          </>
+        );
+      })}
+      {/* <UsersCard data={data?.data} /> */}
     </>
   );
 }

@@ -316,7 +316,7 @@ function RepoCard({ data, isFetching, error }) {
 }
 
 function RepoContributors({ data }) {
-  console.log(data, "ples");
+ 
 
   return (
     <>
@@ -327,8 +327,15 @@ function RepoContributors({ data }) {
           </span>
         }
       </h1>
-
-      <UsersCard data={data} />
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum accusamus laudantium temporibus necessitatibus id at quia officia est quidem molestias delectus facilis ullam dolorum atque, aliquam ex! Architecto, nobis laborum!
+      {data?.map((item, index) => {
+        return (
+          <>
+            <h1>{item?.login}</h1>
+          </>
+        );
+      })}
+      {/* <UsersCard data={data?.data} /> */}
     </>
   );
 }

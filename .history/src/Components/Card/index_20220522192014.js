@@ -328,7 +328,7 @@ function RepoContributors({ data }) {
         }
       </h1>
 
-      <UsersCard data={data} />
+      <UsersCard data={data?.data} />
     </>
   );
 }
