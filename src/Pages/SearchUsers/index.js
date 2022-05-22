@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { CustomInput } from "../../Components/";
 import { useQuery } from "react-query";
 import { UsersCard } from "../../Components";
-import { axiosGithubUsersInstance } from "../../Utilities/axiosInstance";
+import { axiosGithubSearchInstance } from "../../Utilities/axiosInstance";
 function Index() {
   const [value, setValue] = useState("");
 
   const HandleFetchUsers = () => {
-    return axiosGithubUsersInstance.get(`/users?q=${value}`);
+    return axiosGithubSearchInstance.get(`/users?q=${value}`);
   };
 
   const { data, error, isLoading, refetch, isFetching } = useQuery(
@@ -39,13 +39,7 @@ function Index() {
         error={error}
       />
 
-      {data.length === 0 && (
-        <div className="text-center">
-          <h1 className="text-2xl capitalize font-extrabold">
-            try searching for a user
-          </h1>
-        </div>
-      )}
+    
     </>
   );
 }

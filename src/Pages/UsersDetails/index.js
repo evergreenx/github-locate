@@ -8,11 +8,11 @@ import { UserCard } from "../../Components";
 function Index() {
   const { user } = useParams();
 
-  const HandleFetchUsers = () => {
+  const HandleFetchUser = () => {
     return axiosGithubUserInstance.get(`/${user}`);
   };
 
-  const { data, error, isFetching } = useQuery("getUser", HandleFetchUsers);
+  const { data, error, isFetching } = useQuery("getUser", HandleFetchUser);
 
   return (
     <div>

@@ -17,7 +17,7 @@ function UsersCard({ data, isFetching, error }) {
 
   return (
     <>
-      <div class="grid gird-cols-1 lg:grid-cols-4 gap-8 ">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 ">
         {data &&
           data?.map((item, index) => {
             return (
@@ -26,7 +26,7 @@ function UsersCard({ data, isFetching, error }) {
                 className="bg-white p-5 my-11 flex-col w-56 shadow-2xl rounded-lg  flex  justify-center items-center mx-auto"
               >
                 <Link to={`/users/${item.login}`}>
-                  <div class="image">
+                  <div className="image">
                     <img
                       src={item?.avatar_url}
                       alt="avatar"
@@ -62,7 +62,7 @@ function UserCard({ data, isFetching, error }) {
   return (
     <>
       <div className="bg-white p-5 my-11 flex-col  rounded-lg  flex  justify-center items-center mx-auto">
-        <div class="image">
+        <div className="image">
           <img
             src={data?.avatar_url}
             alt="avatar"
@@ -72,7 +72,7 @@ function UserCard({ data, isFetching, error }) {
           />
         </div>
 
-        <div className="text-center px-6">
+        <div className="text-center px-6 py-5">
           <h1 className="text-2xl capitalize font-extrabold">{data?.name}</h1>
 
           <h1 className="text-xl capitalize font-normal">{data?.login}</h1>
@@ -80,24 +80,20 @@ function UserCard({ data, isFetching, error }) {
           <p className="text-sm">{data?.bio}</p>
         </div>
 
-        <div class="user-details">
-          <div className="text-center px-6">
-            <h1 className="text-2xl capitalize font-extrabold">
-              {data?.public_repos}
-            </h1>
-          </div>
-          <div class="follow flex items-center py-2">
+        <div className="user-details">
+          <div className="text-center px-6"></div>
+          <div className="follow flex  items-center py-2">
             <VscRepo />
 
-            {data?.public_repos && (
+            {
               <div className="text-center px-6">
                 <span className="text-sm capitalize font-extrabold">
-                  {data?.public_repos} Repos
+                  {data?.public_repos && data?.public_repos} Repos
                 </span>
               </div>
-            )}
+            }
           </div>
-          <div class="email flex items-center py-2">
+          <div className="email flex items-center py-2">
             <HiOutlineMail />
 
             {data?.email ? (
@@ -112,7 +108,7 @@ function UserCard({ data, isFetching, error }) {
               </div>
             )}
           </div>
-          <div class="location flex items-center py-2">
+          <div className="location flex items-center py-2">
             <TiLocationOutline />
 
             {data?.location && (
@@ -123,31 +119,80 @@ function UserCard({ data, isFetching, error }) {
               </div>
             )}
           </div>
-          <div class="follow flex items-center py-2">
+          <div className="follow flex items-center py-2">
             <MdPeopleOutline />
 
-            {data?.followers && (
-              <div className="text-center px-6">
-                <span className="text-sm capitalize font-extrabold">
-                  {data?.followers} followers
-                </span>
-                .
-                <span className="text-sm capitalize font-extrabold">
-                  {data?.following} following
-                </span>
-              </div>
-            )}
+            <div className="text-center px-6">
+              <span className="text-sm capitalize font-extrabold">
+                {data?.followers && data?.followers} followers
+              </span>
+              ..
+              <span className="text-sm capitalize font-extrabold">
+                {data?.following && data?.following} following
+              </span>
+            </div>
           </div>
 
-          <buuton className="shadow-amber-100 p-3 mx-auto flex justify-center items-center text-white font-bold  bg-black shadow-lg rounded-lg">
+          <button className="shadow-amber-100 p-3 mx-auto flex justify-center items-center text-white font-bold  bg-black shadow-lg rounded-lg">
             <a href={data.html_url} target="_blank" rel="noopener noreferrer">
               View on Github
             </a>
-          </buuton>
+          </button>
         </div>
       </div>
     </>
   );
 }
 
-export { UsersCard, UserCard };
+function RepoCard({ data, isFetching, error }) {
+  if (isFetching) {
+    return <Loader />;
+  }
+  if (error) {
+    return <div>Error...</div>;
+  }
+
+  return (
+    <>
+      <div className="grid gird-cols-1 lg:grid-cols-4 gap-8 ">
+        {data?.map((item, index) => {
+          return (
+            <>
+              <div className="bg-white p-5 my-11 flex-col  rounded-lg  flex  justify-center items-center mx-auto">
+                <Link to={`/repos/${item?.owner.login}/${item?.name}`}>
+                  <div className="image">
+                    <img
+                      src={item?.owner?.avatar_url}
+                      alt="avatar"
+                      width={200}
+                      height={200}
+                      className={"rounded-full"}
+                    />
+                  </div>
+                </Link>
+                <div className="text-center px-6">
+                  <h1 className="text-2xl capitalize font-extrabold">
+                    {item?.full_name}
+                  </h1>
+                  <p className="text-sm">{item?.description}</p>
+                </div>
+
+                <div className="user-details">
+                  <div className="text-center px-6">
+                    <span className="text-sm capitalize font-extrabold">
+                      {item?.language}
+                    </span>
+                  </div>
+
+                  {/* <div className="h2">{item?.description}</div> */}
+                </div>
+              </div>
+            </>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+export { UsersCard, UserCard, RepoCard };

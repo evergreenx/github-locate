@@ -1,6 +1,6 @@
 import axios from "axios";
 // axios instance
-const axiosGithubUsersInstance = axios.create({
+const axiosGithubSearchInstance = axios.create({
   baseURL: "https://api.github.com/search/",
   headers: {
     "Content-Type": "application/json",
@@ -16,12 +16,16 @@ const axiosGithubUserInstance = axios.create({
   },
 });
 
-const axiosGithubRepoInstance = axios.create({
-  baseURL: "https://api.themoviedb.org/3",
+const axiosGithubSingleRepoInstance = axios.create({
+  baseURL: "https://api.github.com/repos/",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
   },
 });
 
-export { axiosGithubUserInstance, axiosGithubUsersInstance, axiosGithubRepoInstance };
+export {
+  axiosGithubUserInstance,
+  axiosGithubSearchInstance,
+  axiosGithubSingleRepoInstance,
+};
