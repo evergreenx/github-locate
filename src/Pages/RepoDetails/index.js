@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { axiosGithubSingleRepoInstance } from "../../Utilities/axiosInstance";
 import { useQuery } from "react-query";
+import { RepoCard } from "../../Components";
 
 export default function Index() {
   const { repo, owner } = useParams();
@@ -16,12 +17,9 @@ export default function Index() {
 
   return (
     <div>
-      {data && (
-        <div>
-          <h1>{data.data.name}</h1>
-          <h1>{data.data.owner.login}</h1>
-        </div>
-      )}
+     
+
+      <RepoCard data={data?.data} isFetching={isFetching} error={error} />
     </div>
   );
 }

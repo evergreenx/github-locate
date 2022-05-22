@@ -3,9 +3,9 @@ import { CustomInput } from "../../Components/";
 // import { UserCard } from "../../Components";
 import { axiosGithubSearchInstance } from "../../Utilities/axiosInstance";
 import { useQuery } from "react-query";
-import { RepoCard } from "../../Components";
+import { ReposCard } from "../../Components";
 function Index() {
-  const [value, setValue] = useState("react");
+  const [value, setValue] = useState("");
 
   const HandleFetchRepos = () => {
     return axiosGithubSearchInstance.get(`/repositories?q=${value}`);
@@ -32,7 +32,7 @@ function Index() {
         />
       </div>
 
-      <RepoCard
+      <ReposCard
         data={data?.data?.items}
         isFetching={isFetching}
         isLoading={isLoading}
